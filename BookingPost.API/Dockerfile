@@ -10,8 +10,8 @@ WORKDIR /app
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["BookingPost.API/BookingPost.API.csproj", "BookingPost.API/"]
-RUN dotnet restore "./BookingPost.API/BookingPost.API.csproj"
+COPY ["BookingPost.API.csproj","./"]
+RUN dotnet restore "BookingPost.API.csproj"
 COPY . .
 WORKDIR "/src/BookingPost.API"
 RUN dotnet build "./BookingPost.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
