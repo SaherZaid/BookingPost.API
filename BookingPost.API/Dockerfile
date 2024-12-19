@@ -13,7 +13,7 @@ WORKDIR /src
 COPY ["BookingPost.API.csproj","./"]
 RUN dotnet restore "BookingPost.API.csproj"
 COPY . .
-WORKDIR "/src/BookingPost.API"
+WORKDIR "/src"
 RUN dotnet build "BookingPost.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage.
