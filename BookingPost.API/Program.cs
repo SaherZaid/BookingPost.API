@@ -17,7 +17,7 @@ builder.Services.Configure<RabbitMqSettings>(builder.Configuration.GetSection("R
 builder.Services
     .AddCors(options =>
         options.AddPolicy(
-            "Support",
+            "Booking",
             policy =>
                 policy
                     .WithOrigins("http://localhost:7777")
@@ -30,11 +30,11 @@ builder.Services
 
 var app = builder.Build();
 
-app.UseCors("Support");
+app.UseCors("Booking");
 app.UseSwagger();
 app.UseSwaggerUI();
 
-app.MapMethods("/Bookings", new[] { "OPTIONS" }, (HttpContext context) =>
+app.MapMethods("/bookings", new[] { "OPTIONS" }, (HttpContext context) =>
 {
     context.Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:7777");
     context.Response.Headers.Add("Access-Control-Allow-Methods", "POST, OPTIONS");
