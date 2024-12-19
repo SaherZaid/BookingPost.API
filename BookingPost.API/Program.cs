@@ -17,7 +17,7 @@ builder.Services.Configure<RabbitMqSettings>(builder.Configuration.GetSection("R
 builder.Services
     .AddCors(options =>
         options.AddPolicy(
-            "Booking",
+            "Bookings",
             policy =>
                 policy
                     .WithOrigins("http://localhost:7777")
@@ -30,7 +30,7 @@ builder.Services
 
 var app = builder.Build();
 
-app.UseCors("Booking");
+app.UseCors("Bookings");
 app.UseSwagger();
 app.UseSwaggerUI();
 
